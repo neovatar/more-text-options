@@ -14,7 +14,13 @@ All the code credits really belong to the original authors of the "Advanced Draw
 - [dev7355608](https://github.com/dev7355608)
 - [Dawid Izydor](https://github.com/DawidIzydor)
 
-# Example
+## Installation
+
+https://github.com/neovatar/more-text-options/releases/latest/download/module.json
+
+See [Foundry Wiki - How to install a module](https://foundryvtt.wiki/en/basics/Modules) on help on how to use the manifest URL to install a module.
+
+## Example
 
 This text drawing from one of my campaigns was the main motivation for this module.
 
