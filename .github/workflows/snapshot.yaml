@@ -8,6 +8,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
 
     steps:
       - uses: actions/checkout@v6
@@ -55,7 +57,7 @@ jobs:
           # Validate that the package download url matches the release asset that will be created.
           if [[ ! $RELEASE_DOWNLOAD == $PACKAGE_DOWNLOAD ]]; then
             echo "The module.json download url does not match the created release asset url."
-            echo "module.json: $PACKAGE_VERSION"
+            echo "module.json: $PACKAGE_DOWNLOAD"
             echo "release asset url: $RELEASE_DOWNLOAD"
             echo "Please fix this and push the tag again."
             exit 1
