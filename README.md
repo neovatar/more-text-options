@@ -1,5 +1,5 @@
 ![Latest Release](https://img.shields.io/github/v/release/neovatar/more-text-options?style=for-the-badge&label=Latest%20release&color=%23ff6400)
-![Downloads (release-13.0.0)](https://img.shields.io/github/downloads/neovatar/more-text-options/release-13.0.0/more-text-options.zip?style=for-the-badge&label=Downloads%20%28release-13.0.0%29)
+![Downloads (release-13.0.1)](https://img.shields.io/github/downloads/neovatar/more-text-options/release-13.0.1/more-text-options.zip?style=for-the-badge&label=Downloads%20%28release-13.0.1%29)
 ![Downloads (all releases)](https://img.shields.io/github/downloads/neovatar/more-text-options/more-text-options.zip?style=for-the-badge&label=Downloads%20%28all%20releases%29)
 [![License](https://img.shields.io/github/license/neovatar/more-text-options?style=for-the-badge&label=License)](LICENSE)
 
