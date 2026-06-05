@@ -1,6 +1,6 @@
 # "More Text Options" Change Log
 
-## Version 13.0.1
+## Version 13.0.2
 
 ### Fixed
 - v14 deprecation warning
