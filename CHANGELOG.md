@@ -3,6 +3,11 @@
 ## Version 13.0.1
 
 ### Fixed
+- v14 deprecation warning
+
+## Version 13.0.1
+
+### Fixed
 - fixed latest module.json download url.
 
 **MANUAL STEP NEEDED:** To enable auto updates, you need to reinstall this module.
