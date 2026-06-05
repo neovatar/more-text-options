@@ -64,7 +64,7 @@ jobs:
           fi
 
       # Create a zip file with all files required by the module to add to the release
-      - run: zip ${{ env.ZIP_NAME }} -r scripts LICENSE README.md CHANGELOG.md module.json
+      - run: zip ${{ env.ZIP_NAME }} -r scripts LICENSE.md README.md CHANGELOG.md module.json
 
       # Create a release for this specific version
       - name: Update Release with Files

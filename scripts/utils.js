@@ -194,7 +194,11 @@ export function cleanData(data, { inplace = false, deletionKeys = false, keepOth
         return newData;
     }
 
-    foundry.utils.mergeObject(data, newData, { performDeletions: true });
+    const mergeOptions = foundry.utils.isNewerVersion(game.version, "14")
+      ? { applyOperators: true }
+      : { performDeletions: true };
+
+    foundry.utils.mergeObject(data, newData, mergeOptions);
 
     if (deletionKeys) {
         foundry.utils.mergeObject(data, newData);
