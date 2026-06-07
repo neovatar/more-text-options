@@ -1,0 +1,19 @@
+name: Release Creation
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  clean-camo:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Purge images from camo.githubusercontent.com
+        shell: bash
+        run: |
+          BRANCH=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}
+          urls=$(curl -sLk "https://github.com/${{ github.repository_owner }}/${{ github.event.repository.name }}/tree/${BRANCH}" | grep -Eo "(http|https)://camo.githubusercontent.com[a-zA-Z0-9./?=_%:-]*")
+          while IFS= read -r url; do curl -X PURGE "$url"; done <<< "$urls"
