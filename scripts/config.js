@@ -67,10 +67,6 @@ Hooks.once("libWrapper.Ready", () => {
         // ---- numeric-ish values coerced through saveValue ----
         processValue(data, `flags.${MODULE_ID}.textStyle.wordWrapWidth`);
 
-        // ---- arrays from form inputs ----
-        processStringArray(data, `flags.${MODULE_ID}.textStyle.fill`);
-        processNumberArray(data, `flags.${MODULE_ID}.textStyle.fillGradientStops`);
-
         return data;
         }, libWrapper.WRAPPER);
 });
@@ -180,8 +176,6 @@ Hooks.on("renderDrawingConfig", (app, root, data) => {
     const $ = getDOMHelper(root);
     
     const document = app.document;
-    const ls = document.getFlag(MODULE_ID, "lineStyle") ?? {};
-    const fs = document.getFlag(MODULE_ID, "fillStyle") ?? {};
     const ts = document.getFlag(MODULE_ID, "textStyle") ?? {};
 
     // Add scrolling styles for the drawing config form
@@ -375,116 +369,12 @@ Hooks.on("renderDrawingConfig", (app, root, data) => {
         </div>
     `);
 
-    $.find(`input[name="textColor"]`).closest(".form-fields").append(`
-        &nbsp;
-        <input type="number" name="flags.${MODULE_ID}.textStyle.fillGradientStops" min="0" max="1" step="0.001" placeholder="" title="Color Stop" value="${ts?.fillGradientStops?.[0] ?? ""}">
-        &nbsp;
-        <a title="Add Color" class="${MODULE_ID}--textStyle-fill--add" style="flex: 0;"><i class="fas fa-plus fa-fw" style="margin: 0;"></i></a>
-        <a title="Remove Color" class="${MODULE_ID}--textStyle-fill--remove" style="flex: 0;"><i class="fas fa-minus fa-fw" style="margin: 0;"></i></a>
-    `);
-    
-    $.find(`a[class="${MODULE_ID}--textStyle-fill--add"]`).click(event => {
-        $.find(`input[name="textColor"]`).closest(".form-group").after(createTextColor(
-            $.find(`input[name="textColor"]`).val(),
-            $.find(`input[name="flags.${MODULE_ID}.textStyle.fillGradientStops"]`).eq(0).val()
-        ));
-        app.setPosition(app.position);
-    });
-    
-    $.find(`a[class="${MODULE_ID}--textStyle-fill--remove"]`).click(event => {
-        $.find(`input[name="textColor"],input[data-edit="textColor"]`).val(
-            $.find(`input[name="flags.${MODULE_ID}.textStyle.fill"]`).eq(0).val() || "#ffffff"
-        );
-        $.find(`input[name="flags.${MODULE_ID}.textStyle.fillGradientStops"]`).eq(0).val(
-            $.find(`input[name="flags.${MODULE_ID}.textStyle.fillGradientStops"]`).eq(1).val() ?? ""
-        );
-        $.find(`input[name="flags.${MODULE_ID}.textStyle.fill"]`).eq(0).closest(".form-group").remove();
-        app.setPosition(app.position);
-    });
-
-    const createTextColor = (fill, stop) => {
-        const groupHTML = `
-            <div class="form-group">
-                <label></label>
-                <div class="form-fields">
-                    <input class="color" type="text" name="flags.${MODULE_ID}.textStyle.fill" value="${fill || "#ffffff"}">
-                    <input type="color" data-edit="" value="${fill || "#ffffff"}">
-                    &nbsp;
-                    <input type="number" name="flags.${MODULE_ID}.textStyle.fillGradientStops" min="0" max="1" step="0.001" placeholder="" title="Color Stop" value="${stop ?? ""}">
-                    &nbsp;
-                    <a title="Add Color" style="flex: 0;"><i class="fas fa-plus fa-fw" style="margin: 0;"></i></a>
-                    <a title="Remove Color" style="flex: 0;"><i class="fas fa-minus fa-fw" style="margin: 0;"></i></a>
-                </div>
-            </div>
-        `;
-
-        // Create element and set up event handlers
-        const tempDiv = document.createElement('div');
-        tempDiv.innerHTML = groupHTML;
-        const group = tempDiv.firstElementChild;
-
-        const colorInput = group.querySelector('input[type="color"]');
-        const textInput = group.querySelector('input[class="color"]');
-        const addButton = group.querySelectorAll('a')[0];
-        const removeButton = group.querySelectorAll('a')[1];
-
-        if (colorInput && textInput) {
-            colorInput.addEventListener('change', (event) => {
-                textInput.value = event.target.value;
-            });
-        }
-
-        if (addButton) {
-            addButton.addEventListener('click', (event) => {
-                const currentFill = textInput ? textInput.value : fill;
-                const currentStop = group.querySelector(`input[name="flags.${MODULE_ID}.textStyle.fillGradientStops"]`)?.value || stop;
-                const newGroup = createTextColor(currentFill, currentStop);
-                group.parentNode.insertBefore(newGroup, group.nextSibling);
-                app.setPosition(app.position);
-            });
-        }
-
-        if (removeButton) {
-            removeButton.addEventListener('click', (event) => {
-                if (group.parentNode) {
-                    group.parentNode.removeChild(group);
-                }
-                app.setPosition(app.position);
-            });
-        }
-
-        return group;
-    }
-
-    if (ts.fill) {
-        const fill = Array.isArray(ts.fill) ? ts.fill : [ts.fill];
-
-        for (let i = fill.length - 1; i >= 0; i--) {
-            const textColorInput = $.find(`input[name="textColor"]`);
-            const formGroup = getDOMHelper(textColorInput).closest(".form-group");
-            if (formGroup.length > 0) {
-                const newGroup = createTextColor(fill[i], ts?.fillGradientStops?.[i + 1]);
-                formGroup.after(newGroup);
-            }
-        }
-    }
-
     // Try to find textAlpha field - first try input, then range-picker (V13)
     let textAlphaElement = $.find(`input[name="textAlpha"]`);
     if (textAlphaElement.length === 0) {
         textAlphaElement = $.find(`range-picker[name="textAlpha"]`);
     }
     
-    textAlphaElement.closest(".form-group").before(`
-        <div class="form-group">
-            <label>Text Color Gradient</label>
-            <select name="flags.${MODULE_ID}.textStyle.fillGradientType" data-dtype="Number">
-                <option value="0" ${ts.fillGradientType === 0 || ts.fillGradientType == null ? "selected" : ""}>Vertical</option>
-                <option value="1" ${ts.fillGradientType === 1 ? "selected" : ""}>Horizontal</option>
-            </select>
-        </div>
-    `);
-
     textAlphaElement.closest(".form-group").after(`
         <div class="form-group">
             <label>Text Alignment</label>

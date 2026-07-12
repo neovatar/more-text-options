@@ -82,3 +82,15 @@ jobs:
           tag: ${{ env.TAG_NAME }}
           body: |
             **Installation:** To manually install this release, please use the following manifest URL: ${{ env.RELEASE_INSTALL_URL }}
+
+      - name: Publish release
+        uses: neovatar/foundry-package-release@v20260712144538
+        with:
+          token: ${{ secrets.FVTTP_TOKEN }}
+          id: ${{ steps.manifest.outputs.id }}
+          version: ${{ steps.manifest.outputs.version }}
+          manifest: ${{ steps.manifest.outputs.manifest }}
+          notes: ${{ steps.manifest.outputs.notes }}
+          compat_min: ${{ steps.manifest.outputs.compat_min }}
+          compat_verified: ${{ steps.manifest.outputs.compat_verified }}
+          dry_run: "false"
