@@ -1,5 +1,10 @@
 # "More Text Options" Change Log
 
+## Version 13.1.1
+
+### Fixed
+- pass values to Package Release API
+
 ## Version 13.1.0
 
 ### Added
