@@ -91,7 +91,7 @@ jobs:
         uses: neovatar/foundry-package-release@v20260712144538
         with:
           token: ${{ secrets.FVTTP_TOKEN }}
-          id: ${{ steps.manifest.outputs.id }}
+          id: more-text-options
           version: ${{ steps.manifest.outputs.version }}
           manifest: ${{ steps.manifest.outputs.manifest }}
           notes: https://github.com/neovatar/more-text-options/blob/${{ steps.manifest.outputs.version }}/CHANGELOG.md
