@@ -94,7 +94,7 @@ jobs:
           id: more-text-options
           version: ${{ steps.manifest.outputs.version }}
           manifest: ${{ steps.manifest.outputs.manifest }}
-          notes: https://github.com/neovatar/more-text-options/blob/${{ steps.manifest.outputs.version }}/CHANGELOG.md
+          notes: https://github.com/neovatar/more-text-options/blob/release-${{ steps.manifest.outputs.version }}/CHANGELOG.md
           compat_min: ${{ steps.manifest.outputs.compatibility_minimum }}
           compat_verified: ${{ steps.manifest.outputs.compatibility_verified }}
           dry_run: "false"
