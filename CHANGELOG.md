@@ -1,5 +1,13 @@
 # "More Text Options" Change Log
 
+## Version 13.1.0
+
+### Added
+- package is now on the official Foundry VTT package registry
+
+### Removed
+- unused "Advanced Drawing Tools" leftover code 
+
 ## Version 13.0.2
 
 ### Fixed

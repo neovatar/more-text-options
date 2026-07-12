@@ -90,7 +90,7 @@ jobs:
           id: ${{ steps.manifest.outputs.id }}
           version: ${{ steps.manifest.outputs.version }}
           manifest: ${{ steps.manifest.outputs.manifest }}
-          notes: ${{ steps.manifest.outputs.notes }}
+          notes: https://github.com/neovatar/more-text-options/blob/${{ steps.manifest.outputs.version }}/CHANGELOG.md
           compat_min: ${{ steps.manifest.outputs.compat_min }}
           compat_verified: ${{ steps.manifest.outputs.compat_verified }}
           dry_run: "false"
