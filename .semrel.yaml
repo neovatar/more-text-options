@@ -35,9 +35,9 @@ plugins:
   - name: "build"
     phase: release
     path: ./tools/build.sh
-  - name: "update-module-json"
+  - name: "update-files"
     phase: pre-tag
-    path: ./tools/update-module-json.sh
+    path: ./tools/update-files.sh
 
 # Uncomment to enable additional features:
 commit_changelog: true # commit CHANGELOG.md before tagging
