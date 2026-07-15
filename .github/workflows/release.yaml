@@ -15,6 +15,9 @@ jobs:
     steps:
       - uses: actions/checkout@v6
 
+      - name: Create .semrel dir
+        run: mkdir -p .semrel
+
       - name: Run semrel
         uses: docker://ghcr.io/semrels/semrel:0.24@sha256:ba61647fbf3a2fdfd8dd307654941b371cd29dffb68d3752a2ec06162a505be8
         with:
