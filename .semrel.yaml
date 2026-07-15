@@ -24,9 +24,9 @@ rules:
 
 # Plugins run in order. condition → pre-tag → release (default).
 plugins:
-  # - uses: "@semrel/github"
-  #   args:
-  #     assets: "dist/more-text-options.zip,module.json"
+  - uses: "@semrel/github"
+    args:
+      assets: "dist/more-text-options.zip,module.json"
   - uses: "@semrel/conventional"
   - uses: "@semrel/release-notes"
   - uses: "@semrel/changelog-md"
