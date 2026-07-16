@@ -16,7 +16,7 @@ jobs:
       - uses: actions/checkout@v6
 
       - name: Run semrel
-        uses: docker://ghcr.io/semrels/semrel:0.24.0-alpine@sha256:a4768f7a74e8bed61f9e7a6643a10464e46bfee4274f1f541979a66c794f0591
+        uses: docker://ghcr.io/neovatar/semrel:0.24.4@sha256:b6bcf14b1133dab7ca510d8fde9028ca70b1be93947c28cf9ba66c77f08c0b64
         with:
           args: release
         env:
