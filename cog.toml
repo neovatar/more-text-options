@@ -19,5 +19,5 @@ remote = "github.com"
 repository = "more-text-options"
 owner = "neovatar"
 authors = [
-  { signature = "neovatar", username = "neovatar" }
+  { signature = "Thomas Seliger", username = "neovatar" }
 ]
