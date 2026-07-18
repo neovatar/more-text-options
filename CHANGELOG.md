@@ -1,10 +1,14 @@
-- - -
+## Version 13.1.1
+
+### Fixed
+- use new release tooling
+
 ## Version 13.1.1
 
 ### Fixed
 - pass values to Package Release API
 
-- - -
+
 ## Version 13.1.0
 
 ### Added
@@ -13,12 +17,11 @@
 ### Removed
 - unused "Advanced Drawing Tools" leftover code 
 
-- - -
 ## Version 13.0.2
+
 ### Fixed
 - v14 deprecation warning
 
-- - -
 ## Version 13.0.1
 
 ### Fixed
@@ -26,7 +29,6 @@
 
 **MANUAL STEP NEEDED:** To enable auto updates, you need to reinstall this module.
 
-- - -
 ## Version 13.0.0
 
 ### Added
