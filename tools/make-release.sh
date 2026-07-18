@@ -30,7 +30,7 @@ echo "Pushing changes"
 git push
 
 echo "Creating tag $VERSION"
-git tag "$VERSION"
+git tag -m "$VERSION" "$VERSION"
 
 echo "Pushing tag $VERSION"
 git push origin "$VERSION"
