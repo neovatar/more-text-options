@@ -15,7 +15,6 @@ template = "remote"
 remote = "github.com"
 repository = "more-text-options"
 owner = "neovatar"
-
 authors = [
   { signature = "Thomas Seliger", username = "neovatar" }
 ]
