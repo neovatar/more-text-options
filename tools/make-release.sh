@@ -14,7 +14,23 @@ VERSION="${TYPE}-${SEMVER}"
 echo "Updating module.json with version $VERSION"
 sed -i -E "s/\"version\": \"([a-z]+-)?[0-9]+\.[0-9]+\.[0-9]+\"/\"version\": \"${SEMVER}\"/; s#(\"download\": \"[^\"]*/download/)([a-z]+-)?[0-9]+\.[0-9]+\.[0-9]+(/)#\1${VERSION}\3#" module.json
 
+FILES=(module.json)
+
 if [[ "$TYPE" == "release" ]]; then
   echo "Updating README.md with version $VERSION"
   sed -i -E "/Downloads \(release-/s/release-[0-9]+\.[0-9]+\.[0-9]+/${VERSION}/g" README.md
+  FILES+=(README.md)
 fi
+
+echo "Committing ${FILES[*]}"
+git add "${FILES[@]}"
+git commit -m "build: $VERSION"
+
+echo "Pushing changes"
+git push
+
+echo "Creating tag $VERSION"
+git tag "$VERSION"
+
+echo "Pushing tag $VERSION"
+git push origin "$VERSION"
