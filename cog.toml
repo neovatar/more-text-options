@@ -11,6 +11,11 @@ chore = { omit_from_changelog = true }
 
 [changelog]
 path = "CHANGELOG.md"
+template = "remote"
+remote = "github.com"
+repository = "more-text-options"
+owner = "neovatar"
+
 authors = [
   { signature = "Thomas Seliger", username = "neovatar" }
 ]
