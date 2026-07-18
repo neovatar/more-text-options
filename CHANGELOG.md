@@ -1,4 +1,13 @@
-# "More Text Options" Change Log
+# Changelog
+
+## 1.0.0 (2026-07-18)
+
+
+### Bug Fixes
+
+* set release-please base tag ([bac8b5a](https://github.com/neovatar/more-text-options/commit/bac8b5a147d2b2598ee8c21a0a2a77a4c2560c62))
+
+## "More Text Options" Change Log
 
 ## Version 13.1.1
 
