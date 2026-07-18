@@ -1,4 +1,4 @@
-## Version 13.1.1
+## Version 13.1.2
 
 ### Fixed
 - use new release tooling
