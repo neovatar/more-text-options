@@ -1,0 +1,23 @@
+from_latest_tag = true
+tag_prefix = "release-"
+ignore_merge_commits = false
+ignore_fixup_commits = false
+branch_whitelist = ["main"]
+pre = "snapshot-"
+skip_ci = "[skip ci]"
+
+pre_bump_hooks = [
+]
+
+[commit_types]
+chore = { omit_from_changelog = true }
+
+[changelog]
+path = "CHANGELOG.md"
+template = "remote"
+remote = "github.com"
+repository = "more-text-options"
+owner = "neovatar"
+authors = [
+  { signature = "neovatar", username = "neovatar" }
+]
