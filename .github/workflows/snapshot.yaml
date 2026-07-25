@@ -7,6 +7,7 @@ on:
 
 env:
   MODULE_NAME: more-text-options
+  ZIP_FILES: scripts LICENSE.md README.md CHANGELOG.md module.json
 
 jobs:
   build:
@@ -71,7 +72,7 @@ jobs:
           fi
 
       # Create a zip file with all files required by the module to add to the release
-      - run: zip ${{ env.ZIP_NAME }} -r scripts LICENSE.md README.md CHANGELOG.md module.json
+      - run: zip ${{ env.ZIP_NAME }} -r ${{ env.ZIP_FILES }}
 
       # Create a release for this specific version
       - name: Update Release with Files
