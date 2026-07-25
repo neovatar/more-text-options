@@ -5,6 +5,9 @@ on:
     tags:
       - "release-*"
 
+env:
+  MODULE_NAME: more-text-options
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -12,7 +15,7 @@ jobs:
       contents: write
 
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
       - name: Load module manifest
         id: manifest
@@ -36,8 +39,8 @@ jobs:
         run: |
           TAG=${GITHUB_REF/refs\/tags\//}
           echo "TAG_NAME=$TAG" >> $GITHUB_ENV
-          echo "ZIP_NAME=more-text-options.zip" >> $GITHUB_ENV
-          echo "RELEASE_DOWNLOAD_URL=https://github.com/${{github.repository}}/releases/download/$TAG/more-text-options.zip" >> $GITHUB_ENV
+          echo "ZIP_NAME=${{ env.MODULE_NAME }}.zip" >> $GITHUB_ENV
+          echo "RELEASE_DOWNLOAD_URL=https://github.com/${{github.repository}}/releases/download/$TAG/${{ env.MODULE_NAME }}.zip" >> $GITHUB_ENV
           echo "RELEASE_INSTALL_URL=https://github.com/${{github.repository}}/releases/latest/download/module.json" >> $GITHUB_ENV
 
       # Run some tests to make sure our `module.json` is correct
@@ -73,7 +76,7 @@ jobs:
       # Create a release for this specific version
       - name: Update Release with Files
         id: create_version_release
-        uses: ncipollo/release-action@v1
+        uses: ncipollo/release-action@339a81892b84b4eeb0f6e744e4574d79d0d9b8dd # v1.21.0
         with:
           allowUpdates: false # Set this to false if you want to prevent updating existing releases
           name: ${{ env.TAG_NAME }}
@@ -91,10 +94,9 @@ jobs:
         uses: neovatar/foundry-package-release@v20260712144538
         with:
           token: ${{ secrets.FVTTP_TOKEN }}
-          id: more-text-options
           version: ${{ steps.manifest.outputs.version }}
           manifest: ${{ steps.manifest.outputs.manifest }}
-          notes: https://github.com/neovatar/more-text-options/blob/${{ steps.manifest.outputs.version }}/CHANGELOG.md
+          notes: https://github.com/neovatar/${{ env.MODULE_NAME }}/blob/${{ steps.manifest.outputs.version }}/CHANGELOG.md
           compat_min: ${{ steps.manifest.outputs.compatibility_minimum }}
           compat_verified: ${{ steps.manifest.outputs.compatibility_verified }}
           dry_run: "false"
