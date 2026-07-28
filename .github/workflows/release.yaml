@@ -24,6 +24,7 @@ jobs:
         run: |
           # create step outputs for the module.json properties we care about
           echo "version=$(jq -r '.version' module.json)" >> $GITHUB_OUTPUT
+          echo "version_slug=$(jq -r '.version' module.json | tr -d '.')" >> $GITHUB_OUTPUT
           echo "compatibility_minimum=$(jq -r '.compatibility.minimum' module.json)" >> $GITHUB_OUTPUT
           echo "compatibility_verified=$(jq -r '.compatibility.verified' module.json)" >> $GITHUB_OUTPUT
           echo "url=$(jq -r '.url' module.json)" >> $GITHUB_OUTPUT
@@ -100,7 +101,7 @@ jobs:
           id: ${{ env.MODULE_NAME }}
           version: ${{ steps.manifest.outputs.version }}
           manifest: ${{ steps.manifest.outputs.manifest }}
-          notes: https://github.com/neovatar/${{ env.MODULE_NAME }}/blob/${{ steps.manifest.outputs.version }}/CHANGELOG.md
+          notes: https://github.com/neovatar/${{ env.MODULE_NAME }}/blob/main/CHANGELOG.md#version-${{ steps.manifest.outputs.version_slug }}
           compat_min: ${{ steps.manifest.outputs.compatibility_minimum }}
           compat_verified: ${{ steps.manifest.outputs.compatibility_verified }}
           dry_run: "false"

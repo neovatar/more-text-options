@@ -1,3 +1,8 @@
+## Version 13.1.4
+
+### Fixed
+- fixed changelog url in published package
+
 ## Version 13.1.3
 
 ### Fixed
