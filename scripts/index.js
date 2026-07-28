@@ -1,11 +1,11 @@
 import { MODULE_ID } from "./const.js";
-import { cleanData } from "./utils.js";
+import { cleanData, preProcess } from "./utils.js";
 
 import "./config.js";
 import "./text.js";
 
 Hooks.on("preCreateDrawing", (document) => {
-    document.updateSource(cleanData(preProcess(document.toObject()), { deletionKeys: true }));
+    document.updateSource(cleanData(document.toObject(), { deletionKeys: true }));
 });
 
 Hooks.on("preUpdateDrawing", (document, data) => {
