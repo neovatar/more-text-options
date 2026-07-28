@@ -1,3 +1,8 @@
+## Version 13.1.3
+
+### Fixed
+- fixed error in preCreateDrawing hook
+
 ## Version 13.1.2
 
 ### Fixed
