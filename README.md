@@ -6,7 +6,7 @@
 
 This module adds some configuration options for text drawings, like configuring the stroke color. It uses options supported by [pixi.js TextStyle class](https://pixijs.download/dev/docs/text.TextStyle.html).
 
-This module is based on the [Advanced Drawing Tools](https://github.com/DawidIzydor/advanced-drawing-tools) module which does not support Foundry v14 yet. "More Text Options" is basically a code snippet taken from this this module with a few additional fixes. Since the text formatting is the only part I really needed, I decided to fork that part of the code.
+This module is based on the [Advanced Drawing Tools](https://github.com/DawidIzydor/advanced-drawing-tools) module which did not support Foundry v14 at that time. "More Text Options" is basically a code snippet taken from this this module with a few additional fixes. Since the text formatting is the only part I really needed, I decided to fork that part of the code.
 
 All the code credits really belong to the original authors of the "Advanced Drawing Tools" module:
 
