@@ -1,3 +1,8 @@
+## Version 13.1.5
+
+### Fixed
+- fixed preCreateDrawing hook regression
+
 ## Version 13.1.4
 
 ### Fixed
