@@ -94,7 +94,7 @@ jobs:
             **Installation:** To manually install this release, please use the following manifest URL: ${{ env.RELEASE_INSTALL_URL }}
 
       - name: Publish release
-        uses: neovatar/foundry-package-release@v20260712144538
+        uses: neovatar/foundry-package-release@v20260725075942
         if: ${{ env.PUBLISH_RELEASE == 'true' }}
         with:
           token: ${{ secrets.FVTTP_TOKEN }}
